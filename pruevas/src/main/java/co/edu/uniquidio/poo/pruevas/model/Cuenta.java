@@ -1,54 +1,33 @@
 package co.edu.uniquidio.poo.pruevas.model;
 
-public class Cuenta {
+public abstract class Cuenta {
     private String numero_cuenta;
-    public String titular;
+    private Usuario titular;
     protected double saldo_actual;
-    public String fecha_apertura;
+    private String fecha_apertura;
     public Estado estado;
 
-    public Cuenta(String numero_cuenta, Estado estado, double saldo_actual, String fecha_apertura, String titular) {
+    public Cuenta(String numero_cuenta, double saldo_actual, String fecha_apertura, Usuario titular) {
         this.numero_cuenta = numero_cuenta;
-        this.estado = estado;
+        this.estado = Estado.ACTIVO;
         this.saldo_actual = saldo_actual;
         this.fecha_apertura = fecha_apertura;
         this.titular = titular;
+        titular.agregarCuenta(this);
+    }
+    public Usuario getTitular() {
+        return titular;
     }
 
-    public void Depositar (double cantidad){
-        if (estado == Estado.ACTIVO) {
-            if (cantidad > 0) {
-                setSaldo_actual(saldo_actual + cantidad);
-                System.out.println("su salario actual es de" + saldo_actual);
-            }
-            System.out.println("no se puede consignar un valor menor a 0 ");
-        }
-        System.out.println("su cuenta se encuentra suspendida");
-
-    }
-
-    public void retirar (double cantidad){
-        if (estado==Estado.ACTIVO) {
-            if (cantidad > 0) {
-                setSaldo_actual(saldo_actual - cantidad);
-                System.out.println("su salario actual es de" + saldo_actual + "y se retiro" + cantidad);
-            }
-            System.out.println("no se puede retirar un valor menor a 0 ");
-        }
-        System.out.println("su cuenta se encuentra suspendida");
-
-    }
+    public abstract void Depositar (double cantidad);
+    public abstract void retirar (double cantidad);
 
 
-    @Override
-    public String toString() {
-        return "Cuenta{" +
-                "numero_cuenta='" + numero_cuenta + '\'' +
-                ", titular='" + titular + '\'' +
-                ", saldo_actual=" + saldo_actual +
-                ", fecha_apertura='" + fecha_apertura + '\'' +
-                ", estado=" + estado +
-                '}';
+    public void mostrarInformacion() {
+        System.out.println("Cuenta: " + numero_cuenta);
+        System.out.println("Titular: " + titular);
+        System.out.println("Saldo: " + saldo_actual);
+        System.out.println("Estado: " + estado);
     }
 
     public String getNumero_cuenta() {
@@ -67,13 +46,6 @@ public class Cuenta {
         this.fecha_apertura = fecha_apertura;
     }
 
-    public String getTitular() {
-        return titular;
-    }
-
-    public void setTitular(String titular) {
-        this.titular = titular;
-    }
 
     public double getSaldo_actual() {
         return saldo_actual;
@@ -89,5 +61,9 @@ public class Cuenta {
 
     public void setEstado(Estado estado) {
         this.estado = estado;
+    }
+
+    public void setTitular(Usuario titular) {
+        this.titular = titular;
     }
 }
