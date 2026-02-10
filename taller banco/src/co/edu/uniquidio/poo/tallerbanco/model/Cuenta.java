@@ -1,4 +1,5 @@
-package co.edu.uniquidio.poo.pruevas.model;
+package co.edu.uniquidio.poo.tallerbanco.model;
+
 
 public abstract class Cuenta {
     private String numero_cuenta;
@@ -15,7 +16,7 @@ public abstract class Cuenta {
         this.titular = titular;
         titular.agregarCuenta(this);
     }
-    public Usuario getTitular() {
+    public Usuario getNombre() {
         return titular;
     }
 
