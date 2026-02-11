@@ -65,6 +65,10 @@ public class Main {
         }
 
         banco.cambiarCuentaNominaACorriente();
+        banco.bloquearCuenta("0001");
+        banco.desbloquearCuenta("0001");
+        ahorro.mostrarInformacion();
+        corriente.mostrarInformacion();
 
 
 
