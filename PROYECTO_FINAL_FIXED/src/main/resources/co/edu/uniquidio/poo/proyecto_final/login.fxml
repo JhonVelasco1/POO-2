@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<StackPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+           fx:controller="co.edu.uniquidio.poo.proyecto_final.ViewController.LoginViewController"
+           style="-fx-background-color: linear-gradient(to bottom right, #1a237e, #283593);">
+
+    <VBox alignment="CENTER" spacing="0" maxWidth="400" maxHeight="460"
+          style="-fx-background-color: white; -fx-background-radius: 16;
+                 -fx-effect: dropshadow(three-pass-box,rgba(0,0,0,0.3),20,0,0,8);">
+
+        <!-- Header azul -->
+        <VBox alignment="CENTER" spacing="6"
+              style="-fx-background-color: #1e88e5; -fx-background-radius: 16 16 0 0;">
+            <padding><Insets top="28" right="30" bottom="24" left="30"/></padding>
+            <Label text="🎟️" style="-fx-font-size: 36px;"/>
+            <Label text="Plataforma de Eventos"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Inicia sesión en tu cuenta"
+                   style="-fx-font-size: 13px; -fx-text-fill: #bbdefb;"/>
+        </VBox>
+
+        <!-- Formulario -->
+        <VBox alignment="CENTER" spacing="14">
+            <padding><Insets top="30" right="36" bottom="10" left="36"/></padding>
+
+            <VBox spacing="5">
+                <Label text="Correo electrónico"
+                       style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #555;"/>
+                <TextField fx:id="txtEmail" promptText="tu@correo.com"
+                           style="-fx-font-size: 14px; -fx-background-radius: 8;
+                                  -fx-border-radius: 8; -fx-border-color: #ddd; -fx-padding: 8 12 8 12;"/>
+            </VBox>
+
+            <VBox spacing="5">
+                <Label text="Contraseña"
+                       style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #555;"/>
+                <PasswordField fx:id="txtPassword" promptText="••••••••"
+                               style="-fx-font-size: 14px; -fx-background-radius: 8;
+                                      -fx-border-radius: 8; -fx-border-color: #ddd; -fx-padding: 8 12 8 12;"/>
+            </VBox>
+
+            <Label fx:id="lblMensaje" style="-fx-text-fill: #c62828; -fx-font-size: 12px;"/>
+
+            <Button text="Iniciar Sesión" onAction="#handleLogin" maxWidth="Infinity"
+                    style="-fx-background-color: #1e88e5; -fx-text-fill: white; -fx-font-size: 14px;
+                           -fx-font-weight: bold; -fx-background-radius: 8;
+                           -fx-padding: 10 0 10 0; -fx-cursor: hand;"/>
+        </VBox>
+
+        <!-- Separador y link a registro -->
+        <VBox alignment="CENTER" spacing="10">
+            <padding><Insets top="10" right="36" bottom="28" left="36"/></padding>
+            <Separator/>
+            <HBox alignment="CENTER" spacing="6">
+                <Label text="¿No tienes cuenta?" style="-fx-font-size: 13px; -fx-text-fill: #666;"/>
+                <Button text="Regístrate aquí" onAction="#irARegistro"
+                        style="-fx-background-color: transparent; -fx-text-fill: #1e88e5;
+                               -fx-font-size: 13px; -fx-cursor: hand;
+                               -fx-underline: true; -fx-padding: 0;"/>
+            </HBox>
+            <Label text="Demo: admin@ejemplo.com / admin"
+                   style="-fx-font-size: 10px; -fx-text-fill: #aaa;"/>
+        </VBox>
+    </VBox>
+</StackPane>

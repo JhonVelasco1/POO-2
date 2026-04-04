@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquidio.poo.proyecto_final.ViewController.UserDashboardViewController"
+            style="-fx-background-color: #eceff1;">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="12"
+              style="-fx-background-color: #1565c0; -fx-padding: 14 20 14 20;">
+            <Label fx:id="lblBienvenida" text="👋 Bienvenido"
+                   style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: white;" HBox.hgrow="ALWAYS"/>
+            <!-- Botón Panel Admin: solo visible para administradores -->
+            <Button fx:id="btnIrAdmin" text="🔧 Panel Admin" onAction="#irAlPanelAdmin"
+                    style="-fx-background-color: #ff6f00; -fx-text-fill: white; -fx-font-weight: bold;
+                           -fx-background-radius: 6; -fx-cursor: hand;" visible="false" managed="false"/>
+            <!-- Botón Cerrar Sesión: siempre visible -->
+            <Button text="🚪 Cerrar Sesión" onAction="#cerrarSesion"
+                    style="-fx-background-color: #c62828; -fx-text-fill: white; -fx-font-weight: bold;
+                           -fx-background-radius: 6; -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+
+            <!-- TAB: EXPLORAR EVENTOS -->
+            <Tab text="🎤  Explorar Eventos">
+                <VBox spacing="10">
+                    <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
+                    <Label text="Eventos Disponibles" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1565c0;"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT"
+                          style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 12;">
+                        <Label text="🔍 Filtrar:" style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="txtFiltroNombre" promptText="Nombre del evento" prefWidth="200"
+                                   style="-fx-background-radius: 6;"/>
+                        <TextField fx:id="txtFiltroCiudad" promptText="Ciudad" prefWidth="150"
+                                   style="-fx-background-radius: 6;"/>
+                        <Button text="Buscar" onAction="#filtrarEventos"
+                                style="-fx-background-color: #1e88e5; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Button text="Limpiar" onAction="#limpiarFiltros"
+                                style="-fx-background-color: #757575; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Separator orientation="VERTICAL"/>
+                        <Button text="🛒  Comprar entrada" onAction="#comprarEntrada"
+                                style="-fx-background-color: #43a047; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                    </HBox>
+                    <TableView fx:id="tablaEventos" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colEvNombre" text="Evento"     prefWidth="220"/>
+                            <TableColumn fx:id="colEvCiudad" text="Ciudad"     prefWidth="120"/>
+                            <TableColumn fx:id="colEvFecha"  text="Fecha/Hora" prefWidth="150"/>
+                            <TableColumn fx:id="colEvEstado" text="Estado"     prefWidth="100"/>
+                        </columns>
+                        <placeholder><Label text="No hay eventos disponibles en este momento"/></placeholder>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- TAB: MIS COMPRAS -->
+            <Tab text="🛒  Mis Compras">
+                <VBox spacing="10">
+                    <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
+                    <Label text="Historial de Compras" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1565c0;"/>
+                    <HBox spacing="10"
+                          style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 12;">
+                        <Button text="💳  Pagar compra seleccionada" onAction="#pagarCompra"
+                                style="-fx-background-color: #43a047; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Button text="❌  Cancelar compra" onAction="#cancelarCompra"
+                                style="-fx-background-color: #e53935; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                    </HBox>
+                    <TableView fx:id="tablaCompras" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colCId"     text="ID Compra" prefWidth="160"/>
+                            <TableColumn fx:id="colCEvento" text="Evento"    prefWidth="180"/>
+                            <TableColumn fx:id="colCEstado" text="Estado"    prefWidth="110"/>
+                            <TableColumn fx:id="colCTotal"  text="Total ($)" prefWidth="110"/>
+                        </columns>
+                        <placeholder><Label text="No tienes compras registradas"/></placeholder>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- TAB: SELECCIÓN DE ASIENTOS -->
+            <Tab text="🪑  Asientos">
+                <fx:include source="seleccionAsientos.fxml"/>
+            </Tab>
+
+            <!-- TAB: MI PERFIL -->
+            <Tab text="👤  Mi Perfil">
+                <fx:include source="perfil.fxml"/>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>
