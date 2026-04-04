@@ -2,7 +2,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="co.edu.uniquidio.poo.proyecto_patrones.Controller.PerfilController"
+      fx:controller="co.edu.uniquindio.PerfilController"
       alignment="CENTER" spacing="15" padding="30" style="-fx-background-color: #f4f6f9;">
 
     <Label text="👤 Editar Perfil" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1e88e5;"/>
