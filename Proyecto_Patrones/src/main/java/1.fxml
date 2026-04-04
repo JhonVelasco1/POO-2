@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uniquidio.poo.proyecto_patrones.Controller.LoginController"
+      alignment="CENTER" spacing="15" padding="30" style="-fx-background-color: #f4f6f9;">
+
+    <Label text="🎟️ Plataforma de Eventos" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1e88e5;"/>
+    <Label text="Iniciar Sesión" style="-fx-font-size: 18px; -fx-text-fill: #424242;"/>
+
+    <TextField fx:id="txtEmail" promptText="Correo electrónico" prefWidth="320" style="-fx-font-size: 14px;"/>
+    <PasswordField fx:id="txtPassword" promptText="Contraseña" prefWidth="320" style="-fx-font-size: 14px;"/>
+
+    <Button text="Iniciar Sesión" onAction="#handleLogin"
+            style="-fx-background-color: #1e88e5; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-pref-width: 320;"/>
+
+    <Label fx:id="lblMensaje" style="-fx-text-fill: #d32f2f; -fx-font-size: 14px;"/>
+</VBox>
