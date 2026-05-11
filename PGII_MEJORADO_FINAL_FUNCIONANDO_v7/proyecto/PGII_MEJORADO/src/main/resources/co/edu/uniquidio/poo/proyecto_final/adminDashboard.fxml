@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquidio.poo.proyecto_final.ViewController.AdminDashboardViewController"
+            style="-fx-background-color: #eceff1;">
+
+    <!-- ===== HEADER ===== -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="14"
+              style="-fx-background-color: #212121; -fx-padding: 12 20 12 20;">
+            <Label text="⚙️  Panel de Administrador — PGII"
+                   style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;"
+                   HBox.hgrow="ALWAYS"/>
+            <Button text="🚪 Cerrar Sesión" onAction="#cerrarSesion"
+                    style="-fx-background-color: #c62828; -fx-text-fill: white;
+                           -fx-background-radius: 6; -fx-cursor: hand; -fx-font-size: 12px;"/>
+        </HBox>
+    </top>
+
+    <!-- ===== TABS ===== -->
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE" style="-fx-tab-min-width: 130px;">
+
+            <!-- ============================================================
+                 TAB 1: USUARIOS  (RF-012)
+                 ============================================================ -->
+            <Tab text="👥  Usuarios">
+                <VBox spacing="10">
+                    <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
+                    <Label text="Gestión de Usuarios (RF-012)"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1565c0;"/>
+
+                    <!-- Formulario CRUD -->
+                    <HBox spacing="12" style="-fx-background-color: white; -fx-background-radius: 8;
+                                              -fx-padding: 14; -fx-effect: dropshadow(gaussian,rgba(0,0,0,.08),6,0,0,2);">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Nombre completo" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                            <TextField fx:id="txtUNombre" promptText="Nombre completo"/>
+                        </VBox>
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Correo" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                            <TextField fx:id="txtUCorreo" promptText="correo@ejemplo.com"/>
+                        </VBox>
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Teléfono" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                            <TextField fx:id="txtUTelefono" promptText="3001234567"/>
+                        </VBox>
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Contraseña" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                            <PasswordField fx:id="txtUPassword" promptText="••••"/>
+                        </VBox>
+                        <VBox spacing="5" alignment="BOTTOM_LEFT">
+                            <HBox spacing="6">
+                                <Button text="➕ Crear"     onAction="#crearUsuario"
+                                        style="-fx-background-color: #43a047; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                                <Button text="✏️ Actualizar" onAction="#actualizarUsuario"
+                                        style="-fx-background-color: #1e88e5; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                                <Button text="🗑️ Eliminar"  onAction="#eliminarUsuario"
+                                        style="-fx-background-color: #e53935; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Tabla usuarios -->
+                    <TableView fx:id="tablaUsuarios" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colUId"       text="ID"       prefWidth="80"/>
+                            <TableColumn fx:id="colUNombre"   text="Nombre"   prefWidth="220"/>
+                            <TableColumn fx:id="colUCorreo"   text="Correo"   prefWidth="220"/>
+                            <TableColumn fx:id="colUTelefono" text="Teléfono" prefWidth="130"/>
+                        </columns>
+                        <placeholder><Label text="No hay usuarios registrados"/></placeholder>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- ============================================================
+                 TAB 2: EVENTOS  (RF-013, RF-024)
+                 ============================================================ -->
+            <Tab text="🎭  Eventos">
+                <VBox spacing="10">
+                    <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
+                    <Label text="Gestión de Eventos (RF-013, RF-024)"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1565c0;"/>
+
+                    <!-- Formulario -->
+                    <HBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 8;
+                                              -fx-padding: 14; -fx-effect: dropshadow(gaussian,rgba(0,0,0,.08),6,0,0,2);">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Tipo" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                            <ComboBox fx:id="cmbETipo" prefWidth="130"/>
+                        </VBox>
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Nombre" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                            <TextField fx:id="txtENombre" promptText="Nombre del evento"/>
+                        </VBox>
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Ciudad" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                            <TextField fx:id="txtECiudad" promptText="Armenia, Bogotá..."/>
+                        </VBox>
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Fecha/Hora" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                            <TextField fx:id="txtEFecha" promptText="2026-07-20 20:00"/>
+                        </VBox>
+                        <VBox spacing="5" alignment="BOTTOM_LEFT">
+                            <HBox spacing="5">
+                                <Button text="➕" onAction="#crearEvento"
+                                        style="-fx-background-color: #43a047; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand; -fx-font-size: 13px; -fx-min-width: 34;">
+                                    <tooltip><Tooltip text="Crear evento"/></tooltip>
+                                </Button>
+                                <Button text="✏️" onAction="#actualizarEvento"
+                                        style="-fx-background-color: #1e88e5; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand; -fx-font-size: 13px; -fx-min-width: 34;">
+                                    <tooltip><Tooltip text="Actualizar"/></tooltip>
+                                </Button>
+                                <Button text="🗑️" onAction="#eliminarEvento"
+                                        style="-fx-background-color: #e53935; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand; -fx-font-size: 13px; -fx-min-width: 34;">
+                                    <tooltip><Tooltip text="Eliminar"/></tooltip>
+                                </Button>
+                            </HBox>
+                            <HBox spacing="5">
+                                <Button text="✅ Publicar" onAction="#publicarEvento"
+                                        style="-fx-background-color: #00897b; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                                <Button text="⏸ Pausar"   onAction="#pausarEvento"
+                                        style="-fx-background-color: #fb8c00; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                                <Button text="🚫 Cancelar" onAction="#cancelarEvento"
+                                        style="-fx-background-color: #b71c1c; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Tabla eventos -->
+                    <TableView fx:id="tablaEventos" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colEId"     text="ID"       prefWidth="90"/>
+                            <TableColumn fx:id="colENombre" text="Nombre"   prefWidth="200"/>
+                            <TableColumn fx:id="colECiudad" text="Ciudad"   prefWidth="110"/>
+                            <TableColumn fx:id="colEFecha"  text="Fecha"    prefWidth="150"/>
+                            <TableColumn fx:id="colEEstado" text="Estado"   prefWidth="100"/>
+                        </columns>
+                        <placeholder><Label text="No hay eventos registrados"/></placeholder>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- ============================================================
+                 TAB 3: COMPRAS  (RF-016)
+                 ============================================================ -->
+            <Tab text="🛒  Compras">
+                <VBox spacing="10">
+                    <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
+                    <Label text="Gestión de Compras (RF-016)"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1565c0;"/>
+
+                    <TableView fx:id="tablaCompras" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colCompraId"      text="ID Compra" prefWidth="140"/>
+                            <TableColumn fx:id="colCompraUsuario" text="Usuario"   prefWidth="180"/>
+                            <TableColumn fx:id="colCompraEvento"  text="Evento"    prefWidth="180"/>
+                            <TableColumn fx:id="colCompraTotal"   text="Total"     prefWidth="100"/>
+                            <TableColumn fx:id="colCompraEstado"  text="Estado"    prefWidth="110"/>
+                        </columns>
+                        <placeholder><Label text="No hay compras registradas"/></placeholder>
+                    </TableView>
+
+                    <HBox spacing="10">
+                        <Button text="✅ Confirmar Compra"    onAction="#confirmarCompra"
+                                style="-fx-background-color: #43a047; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Button text="❌ Cancelar Compra"    onAction="#cancelarCompraAdmin"
+                                style="-fx-background-color: #e53935; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+            <!-- ============================================================
+                 TAB 4: INCIDENCIAS  (RF-017)
+                 ============================================================ -->
+            <Tab text="⚠️  Incidencias">
+                <VBox spacing="10">
+                    <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
+                    <Label text="Registro de Incidencias (RF-017)"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1565c0;"/>
+
+                    <!-- Formulario nueva incidencia -->
+                    <HBox spacing="12" style="-fx-background-color: white; -fx-background-radius: 8;
+                                              -fx-padding: 12; -fx-effect: dropshadow(gaussian,rgba(0,0,0,.08),6,0,0,2);">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Tipo" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                            <TextField fx:id="txtIncTipo" promptText="PAGO_FALLIDO, DOBLE_COMPRA_ASIENTO..."/>
+                        </VBox>
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Descripción" style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+                            <TextField fx:id="txtIncDesc" promptText="Descripción del problema..."/>
+                        </VBox>
+                        <VBox alignment="BOTTOM_LEFT" spacing="5">
+                            <Button text="⚠️ Registrar" onAction="#registrarIncidencia"
+                                    style="-fx-background-color: #e65100; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Tabla incidencias -->
+                    <TableView fx:id="tablaIncidencias" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colIncId"    text="ID"          prefWidth="110"/>
+                            <TableColumn fx:id="colIncTipo"  text="Tipo"        prefWidth="180"/>
+                            <TableColumn fx:id="colIncDesc"  text="Descripción" prefWidth="340"/>
+                            <TableColumn fx:id="colIncFecha" text="Fecha"       prefWidth="160"/>
+                        </columns>
+                        <placeholder><Label text="No hay incidencias registradas"/></placeholder>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- ============================================================
+                 TAB 5: MÉTRICAS Y GRÁFICOS  (RF-018, RF-019)
+                 ============================================================ -->
+            <Tab text="📊  Métricas">
+                <VBox spacing="12">
+                    <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
+                    <Label text="Panel de Métricas y Reportes (RF-018, RF-019)"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1565c0;"/>
+
+                    <!-- Resumen rápido -->
+                    <Label fx:id="lblMetricas"
+                           style="-fx-background-color: white; -fx-background-radius: 8;
+                                  -fx-padding: 12; -fx-font-size: 13px;
+                                  -fx-effect: dropshadow(gaussian,rgba(0,0,0,.08),6,0,0,2);"
+                           maxWidth="Infinity"/>
+
+                    <!-- RF-019: Gráficos JavaFX -->
+                    <HBox spacing="14" VBox.vgrow="ALWAYS">
+                        <!-- BarChart: ventas por evento -->
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="📈 Ingresos por Evento (BarChart — RF-019)"
+                                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #555;"/>
+                            <BarChart fx:id="chartVentas" VBox.vgrow="ALWAYS" animated="false" legendVisible="false">
+                                <xAxis><CategoryAxis label="Evento"/></xAxis>
+                                <yAxis><NumberAxis label="Ingresos ($)"/></yAxis>
+                            </BarChart>
+                        </VBox>
+
+                        <!-- PieChart: ocupación por zona -->
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="🥧 Ocupación por Zona (PieChart — RF-019)"
+                                   style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #555;"/>
+                            <PieChart fx:id="chartOcupacion" VBox.vgrow="ALWAYS" animated="true" legendVisible="true"/>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Botones de reportes RF-046 -->
+                    <HBox spacing="10" style="-fx-padding: 4 0 0 0;">
+                        <Button text="📊 Reporte Ventas"      onAction="#generarReporteVentas"
+                                style="-fx-background-color: #1565c0; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Button text="🏟️ Reporte Ocupación"   onAction="#generarReporteOcupacion"
+                                style="-fx-background-color: #00897b; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Button text="❌ Tasa Cancelación"    onAction="#generarReporteCancelacion"
+                                style="-fx-background-color: #c62828; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Button text="🏆 Top Eventos"         onAction="#generarTopEventos"
+                                style="-fx-background-color: #e65100; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                        <Button text="🔄 Actualizar Gráficos" onAction="#actualizarGraficos"
+                                style="-fx-background-color: #546e7a; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+        </TabPane>
+    </center>
+</BorderPane>

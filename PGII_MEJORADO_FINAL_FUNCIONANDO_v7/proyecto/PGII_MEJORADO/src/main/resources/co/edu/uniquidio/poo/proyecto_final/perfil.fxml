@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<StackPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+           fx:controller="co.edu.uniquidio.poo.proyecto_final.ViewController.PerfilViewController"
+           style="-fx-background-color: linear-gradient(to bottom right,#1a237e,#283593);">
+
+    <VBox alignment="CENTER" spacing="0" maxWidth="440"
+          style="-fx-background-color: white; -fx-background-radius: 14;
+                 -fx-effect: dropshadow(three-pass-box,rgba(0,0,0,.3),18,0,0,6);">
+
+        <VBox alignment="CENTER" spacing="6"
+              style="-fx-background-color: #1565c0; -fx-background-radius: 14 14 0 0;">
+            <padding><Insets top="22" right="30" bottom="18" left="30"/></padding>
+            <Label text="👤" style="-fx-font-size: 32px;"/>
+            <Label text="Mi Perfil" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Actualiza tus datos personales (RF-002)" style="-fx-font-size: 11px; -fx-text-fill: #bbdefb;"/>
+        </VBox>
+
+        <VBox spacing="12">
+            <padding><Insets top="22" right="36" bottom="10" left="36"/></padding>
+            <VBox spacing="4">
+                <Label text="Nombre completo" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #555;"/>
+                <TextField fx:id="txtNombre" promptText="Tu nombre completo"
+                           style="-fx-background-radius: 7; -fx-border-radius: 7; -fx-border-color: #ddd; -fx-padding: 7 10 7 10;"/>
+            </VBox>
+            <VBox spacing="4">
+                <Label text="Correo electrónico" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #555;"/>
+                <TextField fx:id="txtCorreo" style="-fx-background-radius: 7; -fx-border-radius: 7; -fx-border-color: #ddd; -fx-padding: 7 10 7 10;"/>
+            </VBox>
+            <VBox spacing="4">
+                <Label text="Teléfono" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #555;"/>
+                <TextField fx:id="txtTelefono" style="-fx-background-radius: 7; -fx-border-radius: 7; -fx-border-color: #ddd; -fx-padding: 7 10 7 10;"/>
+            </VBox>
+            <VBox spacing="4">
+                <Label text="Métodos de Pago (RF-021)" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #555;"/>
+                <ListView fx:id="listMetodosPago" prefHeight="80"
+                          style="-fx-background-radius: 7; -fx-border-radius: 7; -fx-border-color: #ddd;"/>
+            </VBox>
+            <Label fx:id="lblMensaje" wrapText="true" maxWidth="350" style="-fx-font-size: 12px;"/>
+            <Button text="💾 Guardar Cambios" onAction="#guardarCambios" maxWidth="Infinity"
+                    style="-fx-background-color: #1565c0; -fx-text-fill: white; -fx-font-size: 13px;
+                           -fx-font-weight: bold; -fx-background-radius: 7; -fx-padding: 9 0 9 0; -fx-cursor: hand;"/>
+        </VBox>
+        <VBox alignment="CENTER">
+            <padding><Insets top="8" right="36" bottom="22" left="36"/></padding>
+            <Separator/><VBox alignment="CENTER"><padding><Insets top="10"/></padding>
+                <Button text="← Volver al Panel" onAction="#volver"
+                        style="-fx-background-color: transparent; -fx-text-fill: #1565c0; -fx-underline: true; -fx-cursor: hand; -fx-font-size: 13px;"/>
+            </VBox>
+        </VBox>
+    </VBox>
+</StackPane>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquidio.poo.proyecto_final.ViewController.SeleccionAsientosViewController"
+            style="-fx-background-color: #eceff1;">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="14"
+              style="-fx-background-color: #1565c0; -fx-padding: 12 20 12 20;">
+            <Label text="💺  Selección de Asientos (RF-005, RF-033)"
+                   style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: white;" HBox.hgrow="ALWAYS"/>
+            <Button text="← Volver" onAction="#volver"
+                    style="-fx-background-color: #1976d2; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+    <left>
+        <VBox spacing="12" style="-fx-background-color: white; -fx-padding: 16;
+                                   -fx-effect: dropshadow(gaussian,rgba(0,0,0,.12),8,0,2,0);" prefWidth="220">
+            <Label text="🎭 Evento" style="-fx-font-weight: bold; -fx-text-fill: #1565c0;"/>
+            <ComboBox fx:id="cmbEvento" maxWidth="Infinity"/>
+            <Separator/>
+            <Label text="🏟️ Zona" style="-fx-font-weight: bold; -fx-text-fill: #1565c0;"/>
+            <ComboBox fx:id="cmbZona" maxWidth="Infinity"/>
+            <Label fx:id="lblInfoZona" wrapText="true" style="-fx-font-size: 11px; -fx-text-fill: #555;"/>
+            <Separator/>
+            <Label text="Leyenda:" style="-fx-font-weight: bold; -fx-text-fill: #333;"/>
+            <HBox spacing="6" alignment="CENTER_LEFT"><Label text="🟢" style="-fx-font-size:14px;"/><Label text="Disponible" style="-fx-font-size:11px;"/></HBox>
+            <HBox spacing="6" alignment="CENTER_LEFT"><Label text="🔵" style="-fx-font-size:14px;"/><Label text="Seleccionado" style="-fx-font-size:11px;"/></HBox>
+            <HBox spacing="6" alignment="CENTER_LEFT"><Label text="🔴" style="-fx-font-size:14px;"/><Label text="Reservado/Vendido" style="-fx-font-size:11px;"/></HBox>
+            <HBox spacing="6" alignment="CENTER_LEFT"><Label text="🟡" style="-fx-font-size:14px;"/><Label text="Bloqueado" style="-fx-font-size:11px;"/></HBox>
+            <Separator/>
+            <Label fx:id="lblSeleccionados" text="Seleccionados: 0"
+                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+            <Label fx:id="lblTotal" text="Total: $0"
+                   style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1565c0;"/>
+            <Separator/>
+            <Button fx:id="btnConfirmar" text="✅ Confirmar Selección" onAction="#confirmarSeleccion"
+                    disable="true" maxWidth="Infinity"
+                    style="-fx-background-color:#43a047;-fx-text-fill:white;-fx-font-weight:bold;-fx-background-radius:7;-fx-cursor:hand;"/>
+            <Button text="🔄 Refrescar Mapa" onAction="#refrescarMapa" maxWidth="Infinity"
+                    style="-fx-background-color:#1e88e5;-fx-text-fill:white;-fx-background-radius:7;-fx-cursor:hand;"/>
+        </VBox>
+    </left>
+    <center>
+        <VBox spacing="10">
+            <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+            <Label text="🎪  Mapa de Asientos — haz clic para seleccionar"
+                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #555;"/>
+            <Label text="Escenario / Área Principal"
+                   style="-fx-background-color:#90a4ae;-fx-text-fill:white;-fx-padding:8 30 8 30;
+                          -fx-background-radius:8;-fx-font-size:13px;-fx-font-weight:bold;"
+                   alignment="CENTER" maxWidth="Infinity"/>
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS"
+                        style="-fx-background-color:transparent;-fx-background:transparent;">
+                <GridPane fx:id="gridAsientos" hgap="2" vgap="2"
+                          style="-fx-padding:12;-fx-background-color:#f9f9f9;-fx-background-radius:10;"/>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>
